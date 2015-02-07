@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>申请人类别:</strong>
+  <%= @apply_record.personcategory %>
+</p>
+
+<p>
+  <strong>申请项目:</strong>
+  <%= @apply_record.item %>
+</p>
+
+<p>
+  <strong>鉴定时限:</strong>
+  <%= @apply_record.timelimit %>
+</p>
+
+<p>
+  <strong>艺术品类别:</strong>
+  <%= @apply_record.artcategory %>
+</p>
+
+<p>
+  <strong>鉴定机构:</strong>
+  <%= @apply_record.organization %>
+</p>
+
+<p>
+  <strong>审核状态:</strong>
+  <%= @apply_record.state %>
+</p>
+
+<%= link_to '编辑', edit_apply_record_path(@apply_record) %> |
+<%= link_to '返回', apply_records_path %>

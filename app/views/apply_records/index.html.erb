@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>欢迎, <%= current_user.username %></p>
+
+<h1>申请记录列表</h1>
+<table>
+  <thead>
+    <tr>
+      <th>申请人类别</th>
+      <th>申请项目</th>
+      <th>鉴定时限</th>
+      <th>艺术品类别</th>
+      <th>鉴定机构</th>
+      <th>审核状态</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apply_records.each do |apply_record| %>
+      <tr>
+        <td><%= apply_record.personcategory %></td>
+        <td><%= apply_record.item %></td>
+        <td><%= apply_record.timelimit %></td>
+        <td><%= apply_record.artcategory %></td>
+        <td><%= apply_record.organization %></td>
+        <td><%= apply_record.state %></td>
+        <td><%= link_to '显示', apply_record %></td>
+        <td><%= link_to '编辑', edit_apply_record_path(apply_record) %></td>
+        <td><%= link_to '删除', apply_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '添加申请表', new_apply_record_path %>

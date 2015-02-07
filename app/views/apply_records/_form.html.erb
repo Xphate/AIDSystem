@@ -1,0 +1,41 @@
+<%= form_for(@apply_record) do |f| %>
+  <% if @apply_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apply_record.errors.count, "error") %> prohibited this apply_record from being saved:</h2>
+
+      <ul>
+      <% @apply_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :申请人类别 %><br>
+    <%= f.text_field :personcategory %>
+  </div>
+  <div class="field">
+    <%= f.label :申请项目 %><br>
+    <%= f.text_field :item %>
+  </div>
+  <div class="field">
+    <%= f.label :鉴定时限 %><br>
+    <%= f.text_field :timelimit %>
+  </div>
+  <div class="field">
+    <%= f.label :艺术品类别 %><br>
+    <%= f.text_field :artcategory %>
+  </div>
+  <div class="field">
+    <%= f.label :鉴定机构 %><br>
+    <%= f.text_field :organization %>
+  </div>
+    <div class="field">
+      <%= f.label :操作状态 %><br>
+      <%= f.text_field :state %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
