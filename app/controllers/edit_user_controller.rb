@@ -10,7 +10,8 @@ class EditUserController < ApplicationController
 
 
   def show
-    current_user.email=params[:email]
+    current_user.username=params[:username]
+    current_user.realname=params[:realname]
     current_user.phonenumber=params[:phonenumber]
     current_user.job=params[:job]
     current_user.save

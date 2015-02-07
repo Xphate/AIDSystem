@@ -6,6 +6,8 @@ gem 'rails', '4.2.0'
 gem 'faker'
 gem 'kaminari'
 gem 'devise'
+gem 'cancan'
+gem 'rolify'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

@@ -3,6 +3,7 @@
 <p>欢迎, <%= current_user.username %></p>
 
 <h1>用户中心</h1>
+<h2>个人资料</h2>
 <table>
   <thead>
   <tr>
@@ -25,10 +26,19 @@
         <td>正常</td>
         <td><%= @user.admin %></td>
         <td><%= link_to '编辑', edit_user_edit_path %></td>
-        <td><%= link_to '修改密码',edit_user_password_path %></td>
+        <td><%= link_to '修改密码',edit_registration_path(:user) %></td>
       </tr>
   </tbody>
 </table>
+
+<h2>组织机构和工作职务</h2>
+<%= @user.job %>
+
+<h2>登录历史</h2>
+<p>本次登录时间： <%=@user.current_sign_in_at %></p>
+<p>上次登录时间： <%=@user.last_sign_in_at %></p>
+<p>登录次数： <%=@user.sign_in_count %></p>
+<p>登录ip: <%=@user.current_sign_in_ip %></p>
 
 <br>
 
