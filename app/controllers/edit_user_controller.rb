@@ -17,4 +17,8 @@ class EditUserController < ApplicationController
     current_user.save
     @user=current_user
   end
+
+  def othershow
+    @user=User.where(:username => params[:email]).first
+  end
 end

@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <% if current_user.job=="申请人员" || current_user.admin %>
   <div class="field">
     <%= f.label :申请人类别 %><br>
     <%= f.text_field :personcategory %>
@@ -31,10 +32,15 @@
     <%= f.label :鉴定机构 %><br>
     <%= f.text_field :organization %>
   </div>
+  <% end %>
+
+  <%if  !(current_user.job=="申请人员") || current_user.admin %>
     <div class="field">
       <%= f.label :操作状态 %><br>
       <%= f.text_field :state %>
     </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

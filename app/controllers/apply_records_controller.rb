@@ -4,7 +4,7 @@ class ApplyRecordsController < ApplicationController
   # GET /apply_records
   # GET /apply_records.json
   def index
-    if !current_user.admin?
+    if current_user.job=="申请人员"
       @apply_records = ApplyRecord.where(:user=>current_user.username)
     else
       @apply_records = ApplyRecord.all
@@ -29,7 +29,7 @@ class ApplyRecordsController < ApplicationController
   # POST /apply_records.json
   def create
     @apply_record = ApplyRecord.new(apply_record_params)
-    @apply_record.user=current_user.username
+    @apply_record.user=current_user.email
 
     respond_to do |format|
       if @apply_record.save

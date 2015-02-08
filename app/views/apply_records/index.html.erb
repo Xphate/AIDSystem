@@ -12,6 +12,9 @@
       <th>艺术品类别</th>
       <th>鉴定机构</th>
       <th>审核状态</th>
+      <% unless current_user.job=="申请人员" %>
+          <th>订单来源</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,6 +28,9 @@
         <td><%= apply_record.artcategory %></td>
         <td><%= apply_record.organization %></td>
         <td><%= apply_record.state %></td>
+        <% unless current_user.job=="申请人员" %>
+            <td><%= link_to apply_record.user,edit_user_othershow_path(:email=>apply_record.user) %></td>
+        <% end %>
         <td><%= link_to '显示', apply_record %></td>
         <td><%= link_to '编辑', edit_apply_record_path(apply_record) %></td>
         <td><%= link_to '删除', apply_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,4 +41,6 @@
 
 <br>
 
+<% if current_user.job=="申请人员" %>
 <%= link_to '添加申请表', new_apply_record_path %>
+<% end %>

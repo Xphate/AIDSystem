@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207172850) do
+ActiveRecord::Schema.define(version: 20150208042635) do
 
   create_table "apply_records", force: :cascade do |t|
     t.string   "personcategory"
@@ -20,9 +20,15 @@ ActiveRecord::Schema.define(version: 20150207172850) do
     t.string   "artcategory"
     t.string   "organization"
     t.string   "state"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "user"
+    t.string   "shenqingfuhe"
+    t.string   "jianding"
+    t.string   "jiandingfuhe"
+    t.string   "zhengshucaoli"
+    t.string   "zhengshufafang"
+    t.string   "zhengshubangding"
   end
 
   create_table "people", force: :cascade do |t|

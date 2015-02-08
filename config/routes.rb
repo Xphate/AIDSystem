@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'edit_user/show'
 
+  get 'edit_user/othershow'
+
 
   devise_for :users
   resources :apply_records
