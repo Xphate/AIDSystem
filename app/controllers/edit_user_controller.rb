@@ -19,6 +19,6 @@ class EditUserController < ApplicationController
   end
 
   def othershow
-    @user=User.where(:username => params[:email]).first
+    @user=User.where(:username => params[:name]).first
   end
 end

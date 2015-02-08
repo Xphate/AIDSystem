@@ -6,8 +6,18 @@ class ApplyRecordsController < ApplicationController
   def index
     if current_user.job=="申请人员"
       @apply_records = ApplyRecord.where(:user=>current_user.username)
+    elsif current_user.job=="鉴别业务人员"
+      @apply_records=ApplyRecord.where( :state => "申请复核通过")
+    elsif current_user.job=="鉴别复核人员"
+      @apply_records=ApplyRecord.where( :state => "鉴定通过")
+    elsif current_user.job=="证书草拟人员"
+      @apply_records=ApplyRecord.where( :state => "鉴定复核通过")
+    elsif current_user.job=="证书颁发人员"
+      @apply_records=ApplyRecord.where( :state => "证书草拟完成")
+    elsif current_user.job=="证书绑定人员"
+      @apply_records=ApplyRecord.where( :state => "证书颁发完成")
     else
-      @apply_records = ApplyRecord.all
+      @apply_records=ApplyRecord.all
     end
   end
 
@@ -29,7 +39,7 @@ class ApplyRecordsController < ApplicationController
   # POST /apply_records.json
   def create
     @apply_record = ApplyRecord.new(apply_record_params)
-    @apply_record.user=current_user.email
+    @apply_record.user=current_user.username
 
     respond_to do |format|
       if @apply_record.save
@@ -45,6 +55,19 @@ class ApplyRecordsController < ApplicationController
   # PATCH/PUT /apply_records/1
   # PATCH/PUT /apply_records/1.json
   def update
+    if current_user.job=="申请复核人员"
+      @apply_record.shenqingfuhe=current_user.username
+    elsif current_user.job=="鉴别业务人员"
+      @apply_record.jianding=current_user.username
+    elsif current_user=="鉴别复核人员"
+      @apply_record.jiandingfuhe=current_user.username
+    elsif current_user=="证书草拟人员"
+      @apply_record.zhengshucaoli=current_user.username
+    elsif current_user=="证书发放人员"
+      @apply_record.zhengshufafang=current_user.username
+    elsif current_user=="证书绑定人员"
+      @apply_record.zhengshubangding=current_user.username
+    end
     respond_to do |format|
       if @apply_record.update(apply_record_params)
         format.html { redirect_to @apply_record, notice: 'Apply record was successfully updated.' }

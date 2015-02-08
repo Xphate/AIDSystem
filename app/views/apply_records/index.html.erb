@@ -11,10 +11,16 @@
       <th>鉴定时限</th>
       <th>艺术品类别</th>
       <th>鉴定机构</th>
-      <th>审核状态</th>
+      <th>操作状态</th>
       <% unless current_user.job=="申请人员" %>
           <th>订单来源</th>
       <% end %>
+      <th>复核人员</th>
+      <th>鉴定人员</th>
+      <th>鉴定复核人员</th>
+      <th>证书草拟人员</th>
+      <th>证书发放人员</th>
+      <th>证书绑定人员</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,7 +35,39 @@
         <td><%= apply_record.organization %></td>
         <td><%= apply_record.state %></td>
         <% unless current_user.job=="申请人员" %>
-            <td><%= link_to apply_record.user,edit_user_othershow_path(:email=>apply_record.user) %></td>
+            <td><%= link_to apply_record.user,edit_user_othershow_path(:name=>apply_record.user) %></td>
+        <% else %>
+            <td>无</td>
+        <% end %>
+        <% unless apply_record.shenqingfuhe==nil %>
+            <td><%=link_to apply_record.shenqingfuhe,edit_user_othershow_path(:name=>apply_record.shenqingfuhe) %></td>
+        <% else %>
+            <td>无</td>
+        <% end %>
+        <% unless apply_record.jianding==nil %>
+            <td><%=link_to apply_record.jianding,edit_user_othershow_path(:name=>apply_record.jianding) %></td>
+        <% else %>
+            <td>无</td>
+        <% end %>
+        <% unless apply_record.jiandingfuhe==nil %>
+            <td><%=link_to apply_record.jiandingfuhe,edit_user_othershow_path(:name=>apply_record.jiandingfuhe) %></td>
+        <% else %>
+            <td>无</td>
+        <% end %>
+        <% unless apply_record.zhengshucaoli==nil %>
+            <td><%=link_to apply_record.zhengshucaoli,edit_user_othershow_path(:name=>apply_record.zhengshucaoli) %></td>
+        <% else %>
+            <td>无</td>
+        <% end %>
+        <% unless apply_record.zhengshufafang==nil %>
+            <td><%=link_to apply_record.zhengshufafang,edit_user_othershow_path(:name=>apply_record.zhengshufafang) %></td>
+        <% else %>
+            <td>无</td>
+        <% end %>
+        <% unless apply_record.zhengshubangding==nil %>
+            <td><%=link_to apply_record.zhengshubangding,edit_user_othershow_path(:name=>apply_record.zhengshubangding) %></td>
+        <% else %>
+            <td>无</td>
         <% end %>
         <td><%= link_to '显示', apply_record %></td>
         <td><%= link_to '编辑', edit_apply_record_path(apply_record) %></td>
