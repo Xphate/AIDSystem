@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208042635) do
+ActiveRecord::Schema.define(version: 20150210063155) do
 
   create_table "apply_records", force: :cascade do |t|
     t.string   "personcategory"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20150208042635) do
     t.string   "zhengshufafang"
     t.string   "zhengshubangding"
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "touser"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "tousername"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "name"

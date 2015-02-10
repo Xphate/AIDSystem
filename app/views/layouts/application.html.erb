@@ -16,6 +16,7 @@
       <%= link_to "退出",destroy_user_session_path,:method => :delete %>
       <%= link_to "个人中心",edit_user_index_path %>
       <%= link_to "主页",apply_records_path %>
+      <%= link_to "我的邮箱",recieved_nav_path %>
       <p>职务：<%= current_user.job %> </p>
   <% end %>
 

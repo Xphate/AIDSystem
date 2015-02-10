@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'recieved/index'
+
+  get 'recieved/show'
+
+  get 'recieved/nav'
+
+  resources :messages
+
   get 'edit_user/index'
 
   get 'edit_user/edit'

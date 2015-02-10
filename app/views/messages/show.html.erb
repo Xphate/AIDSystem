@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<h1>已发送</h1>
+<p>
+  <strong>标题:</strong>
+  <%= @message.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @message.content.html_safe %>
+</p>
+
+<p>
+  <strong>发件人:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>发件日期：</strong>
+  <%= @message.created_at %>
+</p>
+
+<p>
+  <strong>收件人:</strong>
+  <%= @message.tousername %>
+</p>
+
+<%= link_to '返回我的邮箱', messages_path %>

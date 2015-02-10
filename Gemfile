@@ -8,6 +8,7 @@ gem 'kaminari'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
+gem 'tinymce-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
